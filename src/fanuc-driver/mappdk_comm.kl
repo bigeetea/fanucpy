@@ -6,7 +6,7 @@
 -- Description:         MAPPDK socket communication
 --                      functions.
 ----------------------------------------------------
-
+PROGRAM MAPPDKCOMM
 
 ROUTINE OPEN_COMM(comm_file: FILE;
                   server_num: INTEGER;
@@ -24,7 +24,7 @@ ROUTINE OPEN_COMM(comm_file: FILE;
 VAR
     entry:              INTEGER
     status:             INTEGER
-    resp:               STRING[254]
+    resp:               STRING[128]
     server_str:         STRING[2]
     server_tag:         STRING[4]
 BEGIN
@@ -80,3 +80,7 @@ BEGIN
     CLOSE FILE comm_file
     MSG_DISCO(server_tag, status)
 END CLOSE_COMM
+
+BEGIN
+
+END MAPPDKCOMM

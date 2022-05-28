@@ -6,6 +6,7 @@
 -- Description:         Handles commands sent from
 --                      external program.
 ----------------------------------------------------
+PROGRAM MAPPDKCMD
 
 ROUTINE GET_CURPOS(cmd: STRING): STRING
 ----------------------------------------------------
@@ -17,8 +18,8 @@ ROUTINE GET_CURPOS(cmd: STRING): STRING
 -- Return value: response string.
 ----------------------------------------------------
 VAR
-    resp:           STRING[254]
-    out:            STRING[254]
+    resp:           STRING[128]
+    out:            STRING[128]
     cpos:           XYZWPR
 BEGIN
     cpos = CURPOS(0, 0)
@@ -55,8 +56,8 @@ ROUTINE GET_CURJPOS(cmd: STRING): STRING
 -- Return value: response string.
 ----------------------------------------------------
 VAR
-    resp:           STRING[254]
-    out:            STRING[254]
+    resp:           STRING[128]
+    out:            STRING[128]
     jpos:           JOINTPOS
     joint_vals:     ARRAY[9] OF REAL
     status:         INTEGER
@@ -100,9 +101,10 @@ ROUTINE GET_INS_PWR(cmd: STRING): STRING
 -- Return value: response string.
 ----------------------------------------------------
 VAR
-    resp:           STRING[254]
+    resp:           STRING[128]
     status:         INTEGER
     ins_pwr:        REAL
+    entry: INTEGER
     
 BEGIN
     GET_VAR(entry, '*SYSTEM*', '$PRO_CFG.$INS_PWR', ins_pwr, status)
@@ -152,7 +154,7 @@ VAR
     wjnt_cfg:           CONFIG
     start:              INTEGER
     prog_index:         INTEGER
-    resp:               STRING[254]
+    resp:               STRING[128]
 
 CONST    
     n_chars = 18
@@ -272,7 +274,7 @@ VAR
     pval:               REAL
     start:              INTEGER
     prog_index:         INTEGER
-    resp:               STRING[254]
+    resp:               STRING[128]
 
 CONST
     n_chars = 18
@@ -389,7 +391,7 @@ ROUTINE MAPPDKCALL(cmd: STRING) : STRING
 -- Return value: response string.
 ----------------------------------------------------
 VAR
-    resp:           STRING[254]
+    resp:           STRING[128]
     prg_name:       STRING[32]
     prog_index:     INTEGER
 BEGIN
@@ -416,6 +418,7 @@ ROUTINE GET_RDO(cmd: STRING): STRING
 ----------------------------------------------------
 VAR
     rdo_num:            INTEGER
+    resp: STRING[128]
 BEGIN
     -- Get RDO number
     CNV_STR_INT(SUB_STR(cmd, 8, 1), rdo_num)
@@ -454,6 +457,7 @@ ROUTINE SET_RDO(cmd: STRING): STRING
 VAR
     rdo_num:            INTEGER
     rdo_val:            STRING[8]
+    resp: STRING[128]
 BEGIN
     -- Get RDO number
     CNV_STR_INT(SUB_STR(cmd, 8, 1), rdo_num)
@@ -549,3 +553,7 @@ BEGIN
     resp = '1:wrong-command'
     RETURN(TRUE)
 END HANDLE_CMD
+
+BEGIN
+
+END MAPPDKCMD
