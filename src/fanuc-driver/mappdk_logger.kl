@@ -19,7 +19,7 @@ VAR
     status:             INTEGER
     entry:              INTEGER
     cmd:                STRING[128]
-    resp:               STRING[1289]
+    resp:               STRING[128]
     keep_conn:          BOOLEAN
     
 CONST

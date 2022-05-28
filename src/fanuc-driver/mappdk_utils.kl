@@ -5,7 +5,6 @@
 -- Copyright:           Agajan Torayev
 -- Description:         Karel utility routines
 ----------------------------------------------------
-PROGRAM MAPPDKUTILS
 
 ROUTINE TP_CLS
 ----------------------------------------------------
@@ -19,7 +18,3 @@ BEGIN
     WRITE(CHR(128), CHR(137))
     FORCE_SPMENU(TP_PANEL, SPI_TPUSER, 1)
 END TP_CLS
-
-BEGIN
-
-END MAPPDKUTILS

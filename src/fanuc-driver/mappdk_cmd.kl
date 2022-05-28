@@ -6,7 +6,6 @@
 -- Description:         Handles commands sent from
 --                      external program.
 ----------------------------------------------------
-PROGRAM MAPPDKCMD
 
 ROUTINE GET_CURPOS(cmd: STRING): STRING
 ----------------------------------------------------
@@ -553,7 +552,3 @@ BEGIN
     resp = '1:wrong-command'
     RETURN(TRUE)
 END HANDLE_CMD
-
-BEGIN
-
-END MAPPDKCMD
