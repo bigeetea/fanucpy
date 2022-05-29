@@ -6,7 +6,6 @@
 -- Description:         Karel utility routines
 ----------------------------------------------------
 
-
 ROUTINE TP_CLS
 ----------------------------------------------------
 -- Function: clears teach pendant.
